@@ -13,16 +13,15 @@ Kong Gateway PROD (Im using the one-month trail version)
 **How to Run** 
 1. Clone this repo </br>
 2. Navigate to root directory of the repo </br>
-3. Build the docker image with command ==> **docker build -t hivemq-edge-tests:1.0 .** </br>
+3. Build the docker image with command ==> **docker build -t kong-api-tests:1.0 .** </br>
 4. Verify docker image is built successfully using docker images command
 5. Run the docker image in a container, which will run the tests and save the test reports locally, in the host machine </br>
-   **docker run -v <TESTOUTPUT_PATH>:/opt/hivemq/lib/build/reports hivemq-edge-tests:1.0 </br>**
+   **docker run -v <TESTOUTPUT_PATH>:/opt/kong/lib/build/reports kong-api-tests:1.0 </br>**
    Change the TESTOUTPUT_PATH to your desired location to save test results
 4. Verify Test results in your set location </br>
  
 **What's happening behind the scenes:**
 The Dockerfile uses a openjdk base image, which has java pre-built. </br>
-Download the HiveMQ Edge software binary from official site, and run the HiveMQ Edge broker on configured port, via a dockerfile step</br>
 There is a script called runtests.sh, which is the entrypoint for the Dockerfile. This script verfies that broker is started successfully in the container and also fire the test execution using a gradle command </br> 
 Our docker run command has a -v option, which creates a volume, and this is how we copy the test result reports to the host machine
 
@@ -30,9 +29,7 @@ Our docker run command has a -v option, which creates a volume, and this is how 
 (If you want to just run the tests locally, without using Docker) </br>
 **Prerequisites**: </br>
 1. Java, Gradle, Docker</br>
-2. HiveMQ setup locally using docker, use the below command </br>
 
-![image](https://github.com/surya818/hivemq-edge-test/assets/7116020/76044981-f450-40c2-9712-24bbe9350f40)</br>
 
 1. Clone this repo </br>
 2. Navigate to root directory of the repo </br>
@@ -41,7 +38,6 @@ Our docker run command has a -v option, which creates a volume, and this is how 
  
 **Libraries used:**</br>
 Java HttpClient2</br>
-Paho eclipse Mqtt client</br>
 junit </br>
 
 **Details:**
