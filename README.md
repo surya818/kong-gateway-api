@@ -43,6 +43,23 @@ junit </br>
 
 <h3>**Test Details:**</h3>
 The tests focus on Kong Gateway functionality. In a nutshell tests deal with creation, modification, deletion of Control Planes, Services and routes. We have tests covering some of the CRUD operations that the rest api offers. And the tests are accpetance tests integrating flows accross different operations of Kong Gateway.
+The Tests cover 
+<ul type="square">
+<li>Create Control Plane</li>  
+<li>List Control Planes</li> 
+<li>Get Control Plane</li> 
+<li>Delete Control Plane</li> 
+<li>Create Service</li>  
+<li>List Services</li> 
+<li>Get Service</li> 
+<li>Delete Service</li> 
+<li>Create Route</li>  
+<li>Get Routes</li> 
+<li>Get GLobal configuration to fetch Proxy URL</li>  
+<li>Access Proxy URL+ Route and verify the backend service api is called successfully</li>  
+<li>Delete Route</li> 
+  
+</ul>
 And I wrote one end to end style API test, whiere I create a control plane, create a service, a route, and access the route on the proxy URL to successfully access the Service API.  
 </br>
 For Service definition URL, I used a free (and apikey less) rest api service from the web, it's simple and lightweight. It's https://dummyjson.com/todos
