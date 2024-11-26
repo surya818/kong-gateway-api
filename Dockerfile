@@ -4,5 +4,6 @@ FROM openjdk:latest
 WORKDIR /opt/kong
 RUN chmod +x -R ./
 
+RUN microdnf install -y findutils && microdnf clean all
 COPY . .
 ENTRYPOINT ["/bin/bash", "lib/runtests.sh"]
