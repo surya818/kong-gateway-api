@@ -59,8 +59,9 @@ The Tests cover
 <li>Access Proxy URL+ Route and verify the backend service api is called successfully</li>  
 <li>Delete Route</li> 
   
-</ul>
-And I wrote one end to end style API test, whiere I create a control plane, create a service, a route, and access the route on the proxy URL to successfully access the Service API.  
+</ul>**
+****There is one end to end style API test, whiere I create a control plane, create a service, a route, and access the route on the proxy URL to successfully access the Service API****
+
 </br>
 For Service definition URL, I used a free (and apikey less) rest api service from the web, it's simple and lightweight. It's https://dummyjson.com/todos
 
