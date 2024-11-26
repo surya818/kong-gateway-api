@@ -18,7 +18,7 @@ Kong Gateway PROD (Im using the one-month trail version)
 
 1. Clone this repo </br>
 2. Navigate to root directory of the repo </br>
-3. Run **export KONG_API_KEY=<YOUR KONG GATEWAY API KEY>**
+3. Run **export KONG_API_KEY = <YOUR KONG GATEWAY API KEY>**
 4. Run **./gradlew test -i** </br>
 5. Verify Test results in lib\build\reports\tests\test\index.html </br>
 
