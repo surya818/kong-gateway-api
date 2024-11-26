@@ -41,7 +41,7 @@ Our docker run command has a -v option, which creates a volume, and this is how 
 Java HttpClient2</br>
 junit </br>
 
-**Details:**
+<h3>**Test Details:**</h3>
 The tests focus on Kong Gateway functionality. In a nutshell tests deal with creation, modification, deletion of Control Planes, Services and routes. We have tests covering some of the CRUD operations that the rest api offers. And the tests are accpetance tests integrating flows accross different operations of Kong Gateway.
 And I wrote one end to end style API test, whiere I create a control plane, create a service, a route, and access the route on the proxy URL to successfully access the Service API.  
 </br>
