@@ -50,7 +50,8 @@ A sample test plan is attached (which consistsa subset of most critical tests ).
 ***The Test plan in no means a comprehensive test plan with all scenarios, its only a subset in the context of this assignment.
 
 **Sample Test Reports:** </br>
-</br>![image](https://github.com/surya818/HiveMQEdgeTest/assets/7116020/34376cc0-6dc0-4e8c-a16a-afa8f97b65b9)
+</br>![image](https://github.com/user-attachments/assets/4b5e5356-e7ed-4bd0-a8fd-3994ef7d629d)
+
 
 </br>![image](https://github.com/surya818/HiveMQEdgeTest/assets/7116020/c9dcd9ff-5de7-4c14-973a-570ae1a7f172)
 
