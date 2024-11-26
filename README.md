@@ -58,6 +58,10 @@ For upstream endpoint, I used a free (and apikey less) rest api service from the
 
 </br> ![image](https://github.com/user-attachments/assets/00c2fac9-15a2-4afc-a7c1-10b0c8a1053b)
 
+****Sample Logging**:**</br>
+![image](https://github.com/user-attachments/assets/0fba4647-87da-402e-85f6-84db09f7f444)
+
+
 
 
 
