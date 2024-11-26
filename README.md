@@ -22,7 +22,7 @@ Gradle 8.7</br>
 
 **How to Run (Docker way)** 
 1. Clone this repo </br>
-2. Navigate to root directory of the repo and set an env variable KONG_API_KEY=<YOUR KONG GATEWAY API KEY></br>
+2. Navigate to root directory of the repo and set an env variable KONG_API_KEY to your KONG GATEWAY API Key</br>
 3. Build the docker image with command ==> **docker build -t kong-api-tests:1.0 .** </br>
 4. Verify docker image is built successfully using docker images command
 5. Run the docker image in a container, which will run the tests and save the test reports locally, in the host machine </br>
