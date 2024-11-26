@@ -1,13 +1,14 @@
-# HiveMQEdgeTest
-Test Automation framework to test Http Adapters of HiveMQ Edge
+# Kong Gateway API Tests 
+Test Automation framework to test APIs of Kong Gateway
 
 **Tech Stack:**</br>
 Java version "21.0.3"</br>
 Gradle 8.7</br>
-**The whole setup is containerized. The dockerfile has everything needed for setting up both Java and HiveMQ and running tests** </br>
+Kong Gateway PROD (Im using the one-month trail version)
+</br>
 
 **Prerequisites/Setup:**
-1. Docker is installed on the local system </br>
+1. Java is installed</br>
 
 **How to Run** 
 1. Clone this repo </br>
