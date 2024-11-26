@@ -1,0 +1,5 @@
+{
+	"baseUrl":"https://eu.api.konghq.com",
+	"baseUrl_global": "https://global.api.konghq.com",
+	"service_upstream_url": "https://dummyjson.com/todos"
+}
