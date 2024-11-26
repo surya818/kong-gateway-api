@@ -4,11 +4,12 @@ Test Automation framework to test APIs of Kong Gateway
 **Tech Stack:**</br>
 Java version "21.0.3"</br>
 Gradle 8.7</br>
-Kong Gateway PROD (Im using the one-month trail version)
-</br>
+**Kong Gateway PROD (Im using the one-month trail version)**
+****</br>
 
 **Prerequisites/Setup:**
 1. Java is installed</br>
+2. Have a Kong Gateway API Key handy 
 
 **How to Run: (on Local Machine, Non Docker )** </br>
 (If you want to just run the tests locally, without using Docker) </br>
@@ -18,7 +19,7 @@ Kong Gateway PROD (Im using the one-month trail version)
 
 1. Clone this repo </br>
 2. Navigate to root directory of the repo </br>
-3. Run **export KONG_API_KEY = <YOUR KONG GATEWAY API KEY>**
+3. Run **export KONG_API_KEY = <YOURKONGAPIKEY>**
 4. Run **./gradlew test -i** </br>
 5. Verify Test results in lib\build\reports\tests\test\index.html </br>
 
