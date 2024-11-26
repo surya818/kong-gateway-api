@@ -8,18 +8,15 @@ Gradle 8.7</br>
 ****</br>
 
 **Prerequisites/Setup:**
-1. Java is installed</br>
+1. Java and Gradle installed</br>
 2. Have a Kong Gateway API Key handy 
 
 **How to Run: (on Local Machine, Non Docker )** </br>
 (If you want to just run the tests locally, without using Docker) </br>
-**Prerequisites**: </br>
-1. Java, Gradle, Docker</br>
-
 
 1. Clone this repo </br>
 2. Navigate to root directory of the repo </br>
-3. Run **export KONG_API_KEY = <YOURKONGAPIKEY>**
+3. Run **export KONG_API_KEY to your KONG Gateway API Key**
 4. Run **./gradlew test -i** </br>
 5. Verify Test results in lib\build\reports\tests\test\index.html </br>
 
