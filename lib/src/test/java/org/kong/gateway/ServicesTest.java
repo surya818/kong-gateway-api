@@ -78,9 +78,20 @@ public class ServicesTest extends BaseTest {
         String path = route.getPaths().getFirst();
         String completePath = "https://"+hostname+ path;
         log.info("PROXY URL "+completePath);
+
+        //Get All todos with the Kong proxy path
         var response = new HttpServiceClient().get(completePath,bearerToken);
         Todos todo = jsonObject.fromJson(response.body(), Todos.class);
         assertTrue(todo.getTodos().size() > 1);
+
+        //Get one specific todo with the specific todo item path
+        int todoItemId = 1;
+        completePath = completePath + "/" + todoItemId;
+        response = new HttpServiceClient().get(completePath,bearerToken);
+        log.info("Todo item with ID 1: "+response.body());
+        Todo todo_item = jsonObject.fromJson(response.body(), Todo.class);
+        assertNotNull(todo_item.getTodo());
+        assertTrue(todo_item.getId() > 0);
 
         //cleanup
         routeAPI.delete(controlPlaneId, serviceId, routeId);

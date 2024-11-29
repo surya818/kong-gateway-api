@@ -20,12 +20,12 @@ public class Todo
         this.userId = userId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTodo() {
+        return todo;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTodo(String todo) {
+        this.todo = todo;
     }
 
     public boolean isCompleted() {
@@ -38,6 +38,6 @@ public class Todo
 
     private int userId;
     private int id;
-    private String title;
+    private String todo;
     private boolean completed;
 }

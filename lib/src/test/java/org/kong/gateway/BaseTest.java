@@ -86,7 +86,7 @@ public class BaseTest {
 		service.setId(serviceId);
 		request.setService(service);
 		ArrayList<String> paths = new ArrayList<String>();
-		String path = "/";
+		String path = "/api/v1/todos";
 		paths.add(path);
 		request.setPaths(paths);
 		request.setPath_handling("v0");
