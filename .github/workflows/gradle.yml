@@ -35,7 +35,11 @@ jobs:
     - name: Provide permissions
       run: chmod +x gradlew
     - name: Verify API Key
-      run: echo $KONG_API_KEY      
+      run: echo $KONG_API_KEY
+    - name: Use Repository Secret
+      env:
+        KONG_API_KEY: ${{ secrets.KONG_API_KEY }}
+      run: echo "The secret value is $SECRET_VALUE"      
     - name: Build with Gradle Wrapper
       run: ./gradlew test
 
