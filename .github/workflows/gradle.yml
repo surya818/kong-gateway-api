@@ -34,14 +34,18 @@ jobs:
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
     - name: Provide permissions
       run: chmod +x gradlew
-    - name: Verify API Key
-      run: echo $KONG_API_KEY
-    - name: Use Repository Secret
+    # Set the environment variable for all subsequent steps
+    - name: Set Environment Variable
       env:
         KONG_API_KEY: ${{ secrets.KONG_API_KEY }}
-      run: echo "The secret value is $KONG_API_KEY"
-    - name: Verify API Key POST
-      run: echo "POST Verification - The secret is $KONG_API_KEY"      
+      run: echo "Environment variable set"
+
+    # Use the environment variable
+    - name: Verify API Key
+      run: echo "Verify API Key - $KONG_API_KEY"
+
     - name: Build with Gradle Wrapper
       run: ./gradlew test -i
+      env:
+        KONG_API_KEY: ${{ secrets.KONG_API_KEY }}
 
