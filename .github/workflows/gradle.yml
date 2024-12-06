@@ -43,5 +43,5 @@ jobs:
     - name: Verify API Key POST
       run: echo $KONG_API_KEY      
     - name: Build with Gradle Wrapper
-      run: ./gradlew test
+      run: ./gradlew test -i
 
