@@ -48,7 +48,10 @@ jobs:
       run: ./gradlew test -i
       env:
         KONG_API_KEY: ${{ secrets.KONG_API_KEY }}
-
+    - name: Check Test Reports dir
+      run: ls -la build        
+    - name: Check Test Reports
+      run: ls -lRa build/reports
     - name: Upload Test Report
       uses: actions/upload-artifact@v3
       with:
