@@ -41,7 +41,7 @@ jobs:
         KONG_API_KEY: ${{ secrets.KONG_API_KEY }}
       run: echo "The secret value is $KONG_API_KEY"
     - name: Verify API Key POST
-      run: echo $KONG_API_KEY      
+      run: echo "POST Verification - The secret is $KONG_API_KEY"      
     - name: Build with Gradle Wrapper
       run: ./gradlew test -i
 
