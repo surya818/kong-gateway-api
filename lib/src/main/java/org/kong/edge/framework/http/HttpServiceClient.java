@@ -1,5 +1,9 @@
 package org.kong.edge.framework.http;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.kong.edge.framework.services.BaseAPI;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -11,6 +15,7 @@ import java.net.http.HttpClient.Version;
 import java.time.Duration;
 
 public class HttpServiceClient implements HttpMethods{
+	private static final Logger log = LogManager.getLogger(HttpServiceClient.class);
 
 	private HttpClient client;
 	public HttpServiceClient(HttpClient client) {
@@ -90,7 +95,7 @@ public class HttpServiceClient implements HttpMethods{
 		        .header("Authorization", bearerToken)
 		        .GET()
 		        .build();
-		
+
 		return executeRequest(request);
 	}
 
@@ -128,6 +133,10 @@ public class HttpServiceClient implements HttpMethods{
 	private HttpResponse<String> executeRequest(HttpRequest request) {
 		
 			HttpResponse<String> response = null;
+			log.info("Executing API method :"+ request.method() + "on url:  "+request.uri());
+			if(request.method().equals("POST") || request.method().equals("PUT")){
+				log.info("Request Payload: "+request.bodyPublisher().get().toString());
+			}
 			try {
 				response = client.send(request, HttpResponse.BodyHandlers.ofString());
 			} catch (IOException | InterruptedException e) {
