@@ -11,6 +11,7 @@ import org.kong.edge.framework.services.ServiceAPI;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -77,18 +78,36 @@ public class ServicesTest extends BaseTest {
         routeId = route.getId();
         assertNotNull(routeId);
 
-        //Get Proxy URL
-
-        GatewayConfiguration gwConfig = routeAPI.getProxyConfiguration();
-        String hostname = gwConfig.getData().getFirst().getDataplane_groups().getFirst().getHostnames().getFirst();
-        String path = route.getPaths().getFirst();
-        String completePath = "https://"+hostname+ path;
-        log.info("PROXY URL "+completePath);
-
         //Get All todos with the Kong proxy path
-        var response = new HttpServiceClient().get(completePath,bearerToken);
-        Todos todo = jsonObject.fromJson(response.body(), Todos.class);
-        assertNotNull(todo.getTodos(), "Get Todos failed, ull todos value");
+        HttpResponse<String> response;
+        Todos todo = new Todos();
+        String completePath = "";
+        for(int i = 0;i<10;i++){
+            //Get Proxy URL
+
+
+            log.info("Polling for Proxy URL");
+            GatewayConfiguration gwConfig = routeAPI.getProxyConfiguration();
+            String hostname = gwConfig.getData().getFirst().getDataplane_groups().getFirst().getHostnames().getFirst();
+            String path = route.getPaths().getFirst();
+            completePath = "https://"+hostname+ path;
+            log.info("PROXY URL "+completePath);
+
+            //Polling the proxy api call
+            response = new HttpServiceClient().get(completePath,bearerToken);
+            todo = jsonObject.fromJson(response.body(), Todos.class);
+            if(todo.getTodos() != null){
+                break;
+            }
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        assertNotNull(todo.getTodos(), "Get Todos failed, null todos value");
         assertTrue(todo.getTodos().size() > 1);
 
         //Get one specific todo with the specific todo item path
@@ -100,10 +119,6 @@ public class ServicesTest extends BaseTest {
         assertNotNull(todo_item.getTodo());
         assertTrue(todo_item.getId() > 0);
 
-        //cleanup
-        routeAPI.delete(controlPlaneId, serviceId, routeId);
-        serviceAPI.delete(controlPlaneId,serviceId);
-        controlPlaneService.deleteControlPlane(controlPlaneId);
 
     }
 
