@@ -24,6 +24,7 @@ public class BaseAPI {
 		testData = TestDataInitializer.loadTestData();
 		baseUrl = testData.get("baseUrl").getAsString();
 		bearerToken = System.getenv("KONG_API_KEY");
+		System.out.println("Bearer Token Found: "+bearerToken.startsWith("kpat"));
 		baseUrl_global = testData.get("baseUrl_global").getAsString();
 	}
 
