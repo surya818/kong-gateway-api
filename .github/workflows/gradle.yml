@@ -49,11 +49,13 @@ jobs:
       env:
         KONG_API_KEY: ${{ secrets.KONG_API_KEY }}
     - name: Check Test Reports dir
-      run: ls -la build        
+      run: ls -la        
+    - name: Check Test Reports dir
+      run: pwd        
     - name: Check Test Reports
-      run: ls -lRa build/reports
+      run: ls -lRa lib/build/reports
     - name: Upload Test Report
       uses: actions/upload-artifact@v3
       with:
         name: test-report
-        path: build/reports/tests/test
+        path: lib/build/reports/tests/test
