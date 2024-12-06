@@ -49,3 +49,8 @@ jobs:
       env:
         KONG_API_KEY: ${{ secrets.KONG_API_KEY }}
 
+    - name: Upload Test Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-report
+        path: build/reports/tests/test
