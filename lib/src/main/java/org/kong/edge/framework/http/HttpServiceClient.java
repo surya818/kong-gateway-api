@@ -133,7 +133,7 @@ public class HttpServiceClient implements HttpMethods{
 	private HttpResponse<String> executeRequest(HttpRequest request) {
 		
 			HttpResponse<String> response = null;
-			log.info("Executing API method :"+ request.method() + "on url:  "+request.uri());
+			log.info("Executing API method :"+ request.method() + " on url:  "+request.uri());
 			if(request.method().equals("POST") || request.method().equals("PUT")){
 				log.info("Request Payload: "+request.bodyPublisher().get().toString());
 			}
@@ -143,6 +143,7 @@ public class HttpServiceClient implements HttpMethods{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			log.info("Response: \n" + response.body());
 
 			return response;
 			

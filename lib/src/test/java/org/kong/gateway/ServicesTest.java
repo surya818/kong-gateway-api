@@ -2,6 +2,7 @@ package org.kong.gateway;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.AfterAll;
 import org.kong.edge.framework.http.HttpServiceClient;
 import org.kong.edge.framework.models.*;
 import org.kong.edge.framework.services.ControlPlaneAPI;
@@ -20,6 +21,11 @@ public class ServicesTest extends BaseTest {
     private static ServiceAPI serviceAPI;
     private static ControlPlaneAPI controlPlaneService;
     private static RouteAPI routeAPI;
+    private static String controlPlaneId;
+    private static String serviceId;
+
+    private static String routeId;
+
 
 
     @BeforeAll
@@ -57,18 +63,18 @@ public class ServicesTest extends BaseTest {
         controlPlaneService.setBearerToken(bearerToken);
         serviceAPI.setBearerToken(bearerToken);
         CreateControlPlaneResponse controlPlane = controlPlaneService.create(createControlPlaneRequest());
-        String controlPlaneId = controlPlane.getId();
+        controlPlaneId = controlPlane.getId();
         int servicesCount = serviceAPI.listServices(controlPlaneId).getData().size();
 
         //Create Service
         ServiceModel responseModel = serviceAPI.create(controlPlaneId,createTodoServiceModel());
         ArrayList<ServiceModel> serviceData = serviceAPI.listServices(controlPlaneId).getData();
-        String serviceId = serviceData.getFirst().getId();
+        serviceId = serviceData.getFirst().getId();
 
         //Create route
         routeAPI.setBearerToken(bearerToken);
         RouteResponse route = routeAPI.create(controlPlaneId,serviceId,createRouteRequest(serviceId));
-        String routeId = route.getId();
+        routeId = route.getId();
         assertNotNull(routeId);
 
         //Get Proxy URL
@@ -82,6 +88,7 @@ public class ServicesTest extends BaseTest {
         //Get All todos with the Kong proxy path
         var response = new HttpServiceClient().get(completePath,bearerToken);
         Todos todo = jsonObject.fromJson(response.body(), Todos.class);
+        assertNotNull(todo.getTodos(), "Get Todos failed, ull todos value");
         assertTrue(todo.getTodos().size() > 1);
 
         //Get one specific todo with the specific todo item path
@@ -98,17 +105,17 @@ public class ServicesTest extends BaseTest {
         serviceAPI.delete(controlPlaneId,serviceId);
         controlPlaneService.deleteControlPlane(controlPlaneId);
 
-
-
-
-
-
-
-
     }
 
 
+    @AfterAll
+    static void tearDown(){
+        routeAPI.delete(controlPlaneId, serviceId, routeId);
+        serviceAPI.delete(controlPlaneId,serviceId);
+        controlPlaneService.deleteControlPlane(controlPlaneId);
+        log.info("Cleanup Successful");
 
+    }
 
 
 }
