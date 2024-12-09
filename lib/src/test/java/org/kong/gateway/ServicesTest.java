@@ -82,6 +82,12 @@ public class ServicesTest extends BaseTest {
         HttpResponse<String> response;
         Todos todo = new Todos();
         String completePath = "";
+        log.info("Waiting explicitly to make the API calls look human...grrr");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         for(int i = 0;i<10;i++){
             //Get Proxy URL
 
