@@ -11,6 +11,8 @@ Gradle 8.7</br>
 1. Java and Gradle installed</br>
 2. Have a Kong Gateway API Key handy 
 
+**How to Run: Created a github action** </br>
+
 **How to Run: (on Local Machine, Non Docker )** </br>
 (If you want to just run the tests locally, without using Docker) </br>
 
